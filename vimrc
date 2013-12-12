@@ -1,5 +1,3 @@
-" Jude: used on Windows. Need to adapt it to use in Debian
-
 " While much of it is beneficial for general use, I would
 " recommend picking out the parts you want and understand,
 " as I have done from other notable vim purists
@@ -61,7 +59,8 @@ if count(g:vimified_packages, 'general')
     set guioptions-=r
     set guioptions-=L
 " Keep NERDTree window fixed between multiple toggles
-    set winfixwidth
+     let NERDTreeShowBookmarks=1
+     set winfixwidth
 
 
     Bundle 'kana/vim-textobj-user'
@@ -161,6 +160,7 @@ if count(g:vimified_packages, 'python')
     Bundle 'python.vim'
     Bundle 'python_match.vim'
     Bundle 'pythoncomplete'
+    Bundle 'sophacles/vim-bundle-mako'
 endif
 " }}}
 
@@ -201,7 +201,6 @@ endif
 
 "Bundle 'Valloric/YouCompleteMe'
 "Bundle 'scrooloose/nerdtree'
-"Bundle 'sophacles/vim-bundle-mako'
 "Bundle 'bling/vim-airline'
 
 filetype plugin indent on "required!
@@ -258,3 +257,12 @@ augroup END
 set splitbelow " Horizontal splits open below current file
 
 set splitright " Vertical splits open to the right of the current file
+
+"add by Jude
+inoremap <Esc> <Esc>:w<CR>
+
+"add by Jude, inspired by http://stackoverflow.com/questions/16642366/snipmate-is-not-working-in-vim
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
