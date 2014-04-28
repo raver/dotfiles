@@ -172,6 +172,7 @@ if count(g:vimified_packages, 'html')
     Bundle 'tpope/vim-markdown'
     Bundle 'digitaltoad/vim-jade'
     Bundle 'slim-template/vim-slim'
+    Bundle 'othree/html5.vim'
 
     au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -195,6 +196,9 @@ if count(g:vimified_packages, 'js')
     Bundle 'alfredodeza/jacinto.vim'
     au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
     au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    
+    Bundle 'walm/jshint.vim'
+    Bundle 'shutnik/jshint2.vim'
 endif
 " }}}
 
@@ -266,3 +270,9 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
+
+"added by Jude
+Bundle 'mrxd/bufkill'
+
+"added by Jude
+autocmd FileType python setlocal foldmethod=indent
