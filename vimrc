@@ -20,7 +20,7 @@ set rtp+=~/vimfiles/bundle/vundle/
 call vundle#rc()
 
 if ! exists('g:vimified_packages')
-    let g:vimified_packages = ['general', 'fancy', 'os', 'coding', 'python', 'html', 'css', 'js', 'color']
+    let g:vimified_packages = ['general', 'fancy', 'os', 'coding', 'python', 'html', 'css', 'js', 'color', 'erlang']
 endif
 
 Bundle 'gmarik/vundle'
@@ -157,6 +157,7 @@ endif
 " _. Python {{{
 if count(g:vimified_packages, 'python')
     Bundle 'klen/python-mode'
+    let g:pymode = 0
     Bundle 'python.vim'
     Bundle 'python_match.vim'
     Bundle 'pythoncomplete'
@@ -202,6 +203,15 @@ if count(g:vimified_packages, 'js')
 endif
 " }}}
 
+" _. Erlang {{{
+" http://stackoverflow.com/questions/13668583/how-to-start-erlang-shell-from-inside-vim
+if count(g:vimified_packages, 'erlang')
+    Bundle 'oscarh/vimerl'
+    let g:erlangHighlightErrors = 1
+    let g:erlangHighlightBif = 1
+    let g:erlangCompletionDisplayDoc = 1
+endif
+" }}}
 
 "Bundle 'Valloric/YouCompleteMe'
 "Bundle 'scrooloose/nerdtree'
