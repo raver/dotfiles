@@ -8,22 +8,23 @@ set nocompatible "Use Vim settings, rather than Vi settings
 
 filetype off "required!
 
-let mapleader = ","
-let maplocalleader = "\\"
 
 " I use Vundle https://github.com/gmarik/vundle as my
 " preferred plugin manager.... never got the hang of
 " vim-pathogen (no offence to the pathogen community)
 "
 "
-set rtp+=~/vimfiles/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 if ! exists('g:vimified_packages')
     let g:vimified_packages = ['general', 'fancy', 'os', 'coding', 'python', 'html', 'css', 'js', 'color', 'erlang']
 endif
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
+
+let mapleader = ","
+let maplocalleader = "\\"
 
 " PACKAGES {{{
 
@@ -36,24 +37,24 @@ endif
 
 " _. General {{{
 if count(g:vimified_packages, 'general')
-    "Bundle 'editorconfig/editorconfig-vim'
+    "Plugin 'editorconfig/editorconfig-vim'
 
-    Bundle 'rking/ag.vim'
+    Plugin 'rking/ag.vim'
     nnoremap <leader>a :Ag -i<space>
 
-    Bundle 'matthias-guenther/hammer.vim'
+    Plugin 'matthias-guenther/hammer.vim'
     nmap <leader>p :Hammer<cr>
 
-    Bundle 'tsaleh/vim-align'
-    Bundle 'tpope/vim-endwise'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'maxbrunsfeld/vim-yankstack'
-    Bundle 'tpope/vim-eunuch'
+    Plugin 'tsaleh/vim-align'
+    Plugin 'tpope/vim-endwise'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-speeddating'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'maxbrunsfeld/vim-yankstack'
+    Plugin 'tpope/vim-eunuch'
 
-    Bundle 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdtree'
     nmap <C-i> :NERDTreeToggle<CR>
 " Disable the scrollbars (NERDTree)
     set guioptions-=r
@@ -63,32 +64,32 @@ if count(g:vimified_packages, 'general')
      set winfixwidth
 
 
-    Bundle 'kana/vim-textobj-user'
-    Bundle 'vim-scripts/YankRing.vim'
+    Plugin 'kana/vim-textobj-user'
+    Plugin 'vim-scripts/YankRing.vim'
     let g:yankring_replace_n_pkey = '<leader>['
     let g:yankring_replace_n_nkey = '<leader>]'
-    let g:yankring_history_dir = '~/vimfiles/tmp/'
+    let g:yankring_history_dir = '~/.vim/tmp/'
     nmap <leader>y :YRShow<cr>
 
-    Bundle 'michaeljsmith/vim-indent-object'
+    Plugin 'michaeljsmith/vim-indent-object'
     let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
 
-    Bundle 'Spaceghost/vim-matchit'
-    Bundle 'kien/ctrlp.vim'
+    Plugin 'Spaceghost/vim-matchit'
+    Plugin 'kien/ctrlp.vim'
     let g:ctrlp_working_path_mode = ''
 
-    Bundle 'vim-scripts/scratch.vim'
+    Plugin 'vim-scripts/scratch.vim'
 
-    Bundle 'troydm/easybuffer.vim'
+    Plugin 'troydm/easybuffer.vim'
     nmap <leader>be :EasyBufferToggle<enter>
 
-    Bundle 'terryma/vim-multiple-cursors'
+    Plugin 'terryma/vim-multiple-cursors'
 endif
 " }}}
 
 " _. Fancy {{{
 if count(g:vimified_packages, 'fancy')
-    Bundle 'bling/vim-airline'
+    Plugin 'bling/vim-airline'
     let g:airline_left_sep = ''
     let g:airline_right_sep = ''
     let g:airline_branch_prefix = ''
@@ -97,7 +98,7 @@ endif
 
 " _. Indent {{{
 if count(g:vimified_packages, 'indent')
-  Bundle 'Yggdroot/indentLine'
+  Plugin 'Yggdroot/indentLine'
   set list lcs=tab:\|\
   let g:indentLine_color_term = 111
   let g:indentLine_color_gui = '#DADADA'
@@ -109,8 +110,8 @@ endif
 
 " _. OS {{{
 if count(g:vimified_packages, 'os')
-    Bundle 'zaiste/tmux.vim'
-    Bundle 'benmills/vimux'
+    Plugin 'zaiste/tmux.vim'
+    Plugin 'benmills/vimux'
     map <Leader>rp :VimuxPromptCommand<CR>
     map <Leader>rl :VimuxRunLastCommand<CR>
 
@@ -121,33 +122,33 @@ endif
 " _. Coding {{{
 
 if count(g:vimified_packages, 'coding')
-    Bundle 'majutsushi/tagbar'
+    Plugin 'majutsushi/tagbar'
     nmap <leader>t :TagbarToggle<CR>
 
-    Bundle 'gregsexton/gitv'
+    Plugin 'gregsexton/gitv'
 
-    Bundle 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/nerdcommenter'
     nmap <leader># :call NERDComment(0, "invert")<cr>
     vmap <leader># :call NERDComment(0, "invert")<cr>
 
-" - Bundle 'msanders/snipmate.vim'
-    Bundle 'sjl/splice.vim'
+" - Plugin 'msanders/snipmate.vim'
+    Plugin 'sjl/splice.vim'
 
-    Bundle 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-fugitive'
     nmap <leader>g :Ggrep
 " ,f for global git serach for word under the cursor (with highlight)
     nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
 " same in visual mode
     :vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
-    Bundle 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_loc_list=1
     let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'], 'passive_filetypes': ['html', 'css', 'slim'] }
 
 " --
 
-    Bundle 'vim-scripts/Reindent'
+    Plugin 'vim-scripts/Reindent'
 
     autocmd FileType gitcommit set tw=68 spell
     autocmd FileType gitcommit setlocal foldmethod=manual
@@ -156,24 +157,24 @@ endif
 
 " _. Python {{{
 if count(g:vimified_packages, 'python')
-    Bundle 'klen/python-mode'
+    Plugin 'klen/python-mode'
     let g:pymode = 0
-    Bundle 'python.vim'
-    Bundle 'python_match.vim'
-    Bundle 'pythoncomplete'
-    Bundle 'sophacles/vim-bundle-mako'
+    Plugin 'python.vim'
+    Plugin 'python_match.vim'
+    Plugin 'pythoncomplete'
+    Plugin 'sophacles/vim-bundle-mako'
 endif
 " }}}
 
 
 " _. HTML {{{
 if count(g:vimified_packages, 'html')
-    Bundle 'tpope/vim-haml'
-    Bundle 'juvenn/mustache.vim'
-    Bundle 'tpope/vim-markdown'
-    Bundle 'digitaltoad/vim-jade'
-    Bundle 'slim-template/vim-slim'
-    Bundle 'othree/html5.vim'
+    Plugin 'tpope/vim-haml'
+    Plugin 'juvenn/mustache.vim'
+    Plugin 'tpope/vim-markdown'
+    Plugin 'digitaltoad/vim-jade'
+    Plugin 'slim-template/vim-slim'
+    Plugin 'othree/html5.vim'
 
     au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -183,40 +184,49 @@ endif
 
 " _. CSS {{{
 if count(g:vimified_packages, 'css')
-    Bundle 'wavded/vim-stylus'
-    Bundle 'lunaru/vim-less'
+    Plugin 'wavded/vim-stylus'
+    Plugin 'lunaru/vim-less'
     nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
 endif
 " }}}
 
 " _. JS {{{
 if count(g:vimified_packages, 'js')
-    Bundle 'kchmck/vim-coffee-script'
+    Plugin 'kchmck/vim-coffee-script'
     au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
-    Bundle 'alfredodeza/jacinto.vim'
+    Plugin 'alfredodeza/jacinto.vim'
     au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
     au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     
-    Bundle 'walm/jshint.vim'
-    Bundle 'shutnik/jshint2.vim'
+    Plugin 'walm/jshint.vim'
+    Plugin 'shutnik/jshint2.vim'
 endif
 " }}}
 
 " _. Erlang {{{
 " http://stackoverflow.com/questions/13668583/how-to-start-erlang-shell-from-inside-vim
 if count(g:vimified_packages, 'erlang')
-    Bundle 'oscarh/vimerl'
+    Plugin 'oscarh/vimerl'
     let g:erlangHighlightErrors = 1
     let g:erlangHighlightBif = 1
     let g:erlangCompletionDisplayDoc = 1
 endif
 " }}}
 
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'scrooloose/nerdtree'
-"Bundle 'bling/vim-airline'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'bling/vim-airline'
+"add by Jude, inspired by http://stackoverflow.com/questions/16642366/snipmate-is-not-working-in-vim
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'
 
+"added by Jude
+Plugin 'mrxd/bufkill.vim'
+
+call vundle#end()
 filetype plugin indent on "required!
 
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
@@ -275,14 +285,7 @@ set splitright " Vertical splits open to the right of the current file
 "add by Jude
 inoremap <Esc> <Esc>:w<CR>
 
-"add by Jude, inspired by http://stackoverflow.com/questions/16642366/snipmate-is-not-working-in-vim
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-
-"added by Jude
-Bundle 'mrxd/bufkill'
 
 "added by Jude
 autocmd FileType python setlocal foldmethod=indent
+
