@@ -53,6 +53,7 @@ if count(g:vimified_packages, 'general')
     Plugin 'tpope/vim-unimpaired'
     Plugin 'maxbrunsfeld/vim-yankstack'
     Plugin 'tpope/vim-eunuch'
+    Plugin 'Raimondi/delimitMate'
 
     Plugin 'scrooloose/nerdtree'
     nmap <C-i> :NERDTreeToggle<CR>
@@ -195,10 +196,11 @@ if count(g:vimified_packages, 'js')
     Plugin 'kchmck/vim-coffee-script'
     au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
-    Plugin 'alfredodeza/jacinto.vim'
-    au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-    au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-    
+    Plugin 'pangloss/vim-javascript'
+
+    Plugin 'othree/javascript-libraries-syntax'
+    let g:used_javascript_libs = 'jquery,angularjs,angularui'
+
     Plugin 'walm/jshint.vim'
     Plugin 'shutnik/jshint2.vim'
 endif
@@ -214,14 +216,30 @@ if count(g:vimified_packages, 'erlang')
 endif
 " }}}
 
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'bling/vim-airline'
-"add by Jude, inspired by http://stackoverflow.com/questions/16642366/snipmate-is-not-working-in-vim
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+"follow this to set YouCompleteMe not conflict
+"with ultisnips
+"http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
+Plugin 'matthewsimo/angular-vim-snippets'
+let g:UltiSnipsUsePythonVersion = 2
+    "let g:UltiSnipsSnippetDirectories=['UltiSnips','bundle/angular-vim-snippets/UltiSnips']
+    "let g:UltiSnipsSnippetDirectories=['UltiSnips','bundle/angular-vim-snippets/UltiSnips']
+    
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<c-l>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsListSnippets="<c-m>"
+"
+" " If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+
 
 "added by Jude
 Plugin 'mrxd/bufkill.vim'
