@@ -215,15 +215,26 @@ if count(g:vimified_packages, 'erlang')
 endif
 " }}}
 
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'bling/vim-airline'
-"
-"add by Jude, inspired by http://stackoverflow.com/questions/16642366/snipmate-is-not-working-in-vim
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-Plugin 'garbas/vim-snipmate'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetDirectories=['UltiSnips','/home/yu/github/vim-ng-snippets/UltiSnips' ]
+
+
+
+
+
 
 "added by Jude
 Plugin 'mrxd/bufkill.vim'
@@ -292,3 +303,5 @@ inoremap <Esc> <Esc>:w<CR>
 
 "added by Jude
 autocmd FileType python setlocal foldmethod=indent
+
+set mouse=a
