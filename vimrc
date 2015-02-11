@@ -215,6 +215,8 @@ if count(g:vimified_packages, 'erlang')
 endif
 " }}}
 
+Plugin 'Valloric/YouCompleteMe'
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
@@ -222,7 +224,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
