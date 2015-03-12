@@ -15,4 +15,10 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
+
+fcitx&
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
 exec openbox-session
